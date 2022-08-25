@@ -1,0 +1,4 @@
+Sitemap: https://bradyplanden.github.io/sitemap.xml
+
+User-agent: *
+Disallow:
