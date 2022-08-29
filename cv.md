@@ -23,9 +23,16 @@ cover=true
 
 
 # Education
+**2018-2022** \\
+Ph.D in Mechanical Engineering, Oxford Brookes University\\
+&emsp;&emsp;&emsp;&emsp;Thesis: Improvements on Physics-Informed Models for Lithium Batteries \\
+&emsp;&emsp;&emsp;&emsp;Supervisor: Prof. Denise Morrey \\
 
-* Ph.D in Mechanical Engineering, Oxford Brookes University (2018-2022)\\
-* B.Eng in Mechanical Engineering, University of Victoria (2011-2016) 
+&nbsp;
+
+**2011-2016** \\
+B.Eng in Mechanical Engineering, University of Victoria  \\
+&emsp;&emsp;&emsp;&emsp;Dissertation: One-Dimensional Combustion Engine Modelling and Optimisation
 
 # Professional Appointments
 Research Fellow in Future of Transport, Oxford Brookes University (2021 –)\\
@@ -39,7 +46,7 @@ Research Fellow in Future of Transport, Oxford Brookes University (2021 –)\\
 # Journal Articles
 
 * Planden et al. (2022) [”A Computationally Informed Realisation Algorithm for Lithium-Ion Batteries Implemented with LiiBRA.jl”](https://arxiv.org/abs/2203.17105). Under Review. \\
-* Jang et al. (2022) [”BattPhase – A convergent, non-oscillatory, efficient algorithm and code for predicting shape changes in lithium metal batteries us- ing phase-field models – 1. Secondary Current Distribution”](https://iopscience.iop.org/article/10.1149/1945-7111/ac86a7) Accepted.
+* Jang et al. (2022) [”BattPhase – A convergent, non-oscillatory, efficient algorithm and code for predicting shape changes in lithium metal batteries us- ing phase-field models – 1. Secondary Current Distribution”](https://iopscience.iop.org/article/10.1149/1945-7111/ac86a7). Journal of The Electrochemical Society, 2022.
 
 
 
@@ -47,6 +54,8 @@ Research Fellow in Future of Transport, Oxford Brookes University (2021 –)\\
 **2021 -**\\
  B.Eng Dissertation, Oxford Brookes University - 3 Students \\ 
 * Project creation, supervision, and marking for B.Eng dissertation projects. This includes introducing project management skills, research methods, and guidance for successful data acquisition.\\
+
+&nbsp;
 
 **2019 -** \\
 M.Sc Dissertation, Oxford Brookes University - 5 Students\\
@@ -56,11 +65,14 @@ M.Eng Dissertation, Oxford Brookes University - 10 Students \\
 
 
 # Grants & Awards
-2012 - **RISE** - Awarded Undergraduate Research Student.\\
-2021 - **Oxford Brookes University** \\
+**2022, 2019** \\ 
+Research Internships in Science and Engineering Germany (RISE) \\
+&emsp;&emsp;&emsp;&emsp;Awarded Undergraduate Research Student.\\
+
+**2021** \\
+Oxford Brookes University \\
 &emsp;&emsp;&emsp;&emsp;Enhancing the Future of Transport and Urban Infrastructure. £2,000 \\
 &emsp;&emsp;&emsp;&emsp;Research Excellence Award for Postdoctoral Researchers. £6,000 \\
-2019 - **RISE** - Awarded Undergraduate Research Student.
 
 
 # Conferences
@@ -72,11 +84,13 @@ M.Eng Dissertation, Oxford Brookes University - 10 Students \\
 
 
 # Invited Talks
-(2022) IMechE Webinar Series - ”Improving Battery Technology for Energy Storage and Transport Applications”
-(2021) University of Victoria - ”Lithium-ion Battery Reduced Order Modelling & Open-Source Test Methods”
+**2022**\\
+ IMechE Webinar Series - ”Improving Battery Technology for Energy Storage and Transport Applications” \\
+**2021** \\
+University of Victoria - ”Lithium-ion Battery Reduced Order Modelling & Open-Source Test Methods”
 
 # Departmental Talks
-2021 - Oxford Brookes University,
+**2021** - Oxford Brookes University,
 ”Lithium-ion Battery Modelling and Reduced-Order Techniques”
 
 # Industrial Positions
@@ -87,7 +101,8 @@ M.Eng Dissertation, Oxford Brookes University - 10 Students \\
 * Experimental Data Acquisition and Automation for Model Parameterisation
 
 # Extra-Curricular Advisership
-Oxford Brookes Racing (2018– )\\
+**2018–2021** \\
+Oxford Brookes Racing - Formula Student\\
 * Mentored Students in Academic, Career, Personal Development
 * Outlined Team Direction for Multi-Year Success and Improvements
 * Developed Research Topics for High-Performance Battery Pack Designs 
