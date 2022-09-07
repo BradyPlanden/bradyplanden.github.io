@@ -45,7 +45,7 @@ Research Fellow in Future of Transport, Oxford Brookes University (2021 –)\\
 
 # Journal Articles
 
-* Planden et al. (2022) [”A Computationally Informed Realisation Algorithm for Lithium-Ion Batteries Implemented with LiiBRA.jl”](https://arxiv.org/abs/2203.17105). Under Review. \\
+* Planden et al. (2022) [”A Computationally Informed Realisation Algorithm for Lithium-Ion Batteries Implemented with LiiBRA.jl”](https://arxiv.org/abs/2203.17105). Journal of Energy Storage, Accepted. \\
 * Jang et al. (2022) [”BattPhase – A convergent, non-oscillatory, efficient algorithm and code for predicting shape changes in lithium metal batteries us- ing phase-field models – 1. Secondary Current Distribution”](https://iopscience.iop.org/article/10.1149/1945-7111/ac86a7). Journal of The Electrochemical Society, 2022.
 
 
