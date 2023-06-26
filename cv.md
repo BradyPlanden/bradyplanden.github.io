@@ -35,14 +35,14 @@ B.Eng in Mechanical Engineering, University of Victoria  \\
 &emsp;&emsp;&emsp;&emsp;Dissertation: One-Dimensional Combustion Engine Modelling and Optimisation
 
 # Professional Appointments
-Research Associate in Energy Storage Modelling, University of Oxford (2023 – )\\
+**Research Associate in Energy Storage Modelling, University of Oxford (2023 – )**\\
 * Research in estimation and optimisation frameworks for next generation, high-voltage LNMO batteries
 * Open-source development and test automation for [PyBaMM](https://pybamm.org/)
 * Organisation of the 2023 Oxford Battery Modelling Symposium\\
 
 &nbsp;
 
-Research Fellow in Future of Transport, Oxford Brookes University (2021 – 2023)\\
+**Research Fellow in Future of Transport, Oxford Brookes University (2021 – 2023)**\\
 
 * Funding Acquisition & Development of the [High Voltage & Energy Storage Lab](https://hves.brookes.ac.uk/) \\
 * Developed Open-Source Electrochemical Research Packages ([LiiBRA.jl](https://github.com/BradyPlanden/LiiBRA.jl) / [BattPhase.jl](https://github.com/BradyPlanden/BattPhase.jl) / [BattCalc.jl](https://github.com/BradyPlanden/BattCalc.jl)) \\
