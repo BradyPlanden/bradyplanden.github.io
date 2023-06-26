@@ -35,7 +35,14 @@ B.Eng in Mechanical Engineering, University of Victoria  \\
 &emsp;&emsp;&emsp;&emsp;Dissertation: One-Dimensional Combustion Engine Modelling and Optimisation
 
 # Professional Appointments
-Research Fellow in Future of Transport, Oxford Brookes University (2021 –)\\
+Research Associate in Energy Storage Modelling, University of Oxford (2023 – )\\
+* Research in estimation and optimisation frameworks for next generation, high-voltage LNMO batteries
+* Open-source development and test automation for [PyBaMM](https://pybamm.org/)
+* Organisation of the 2023 Oxford Battery Modelling Symposium\\
+
+&nbsp;
+
+Research Fellow in Future of Transport, Oxford Brookes University (2021 – 2023)\\
 
 * Funding Acquisition & Development of the [High Voltage & Energy Storage Lab](https://hves.brookes.ac.uk/) \\
 * Developed Open-Source Electrochemical Research Packages ([LiiBRA.jl](https://github.com/BradyPlanden/LiiBRA.jl) / [BattPhase.jl](https://github.com/BradyPlanden/BattPhase.jl) / [BattCalc.jl](https://github.com/BradyPlanden/BattCalc.jl)) \\
@@ -85,7 +92,9 @@ Oxford Brookes University \\
 
 # Invited Talks
 **2022**\\
- IMechE Webinar Series - ”Improving Battery Technology for Energy Storage and Transport Applications” \\
+Battery Modelling Webinar Series - ”Lithium-Ion Battery Realisation Algorithms (LiiBRA)” \\
+
+IMechE Webinar Series - ”Improving Battery Technology for Energy Storage and Transport Applications” \\
 **2021** \\
 University of Victoria - ”Lithium-ion Battery Reduced Order Modelling & Open-Source Test Methods”
 
@@ -100,7 +109,7 @@ University of Victoria - ”Lithium-ion Battery Reduced Order Modelling & Open-S
 * Implemented Physics Based Engine Controls with MATLAB & Simulink
 * Experimental Data Acquisition and Automation for Model Parameterisation
 
-# Extra-Curricular Advisership
+# Academic Advisership
 **2018–2021** \\
 Oxford Brookes Racing - Formula Student\\
 * Mentored Students in Academic, Career, Personal Development

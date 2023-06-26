@@ -7,7 +7,7 @@ cover = true
 <!-- # {{author}} -->
 
 @@cover-lead,lead
-  Hi! This site is planned to cover topics related to applied mathematics in electrochemical modelling.
+  Hi! This site aims to cover topics related to applied mathematics in electrochemical modelling; however, at the moment, it’s mostly used as a portfolio landing page!
 @@
 
 
