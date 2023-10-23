@@ -1,0 +1,96 @@
+site_name: Today I Learned
+site_url: https://bradyplanden.github.io
+repo_name: null
+repo_url: null #https://github.com/BradyPlanden/bradyplanden
+site_description: A today I learned (TIL) site
+site_author: Brady Planden
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/BradyPlanden/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/bradyplanden/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/BradyPlanden
+    - icon: fontawesome/solid/graduation-cap
+      link: https://scholar.google.com/citations?user=riURnXwAAAAJ&hl=en
+
+theme: 
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal 
+      toggle:
+        icon: material/weather-night
+        name: Dark
+    - scheme: slate
+      primary: slate
+      accent: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Light
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - content.code.copy
+    - search.suggest
+    - navigation.expand
+    - toc.integrate
+
+
+extra_javascript:
+  - 'https://platform.twitter.com/widgets.js'
+
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins: 
+ - search
+ - macros
+ - timetoread
+ - custom
+
+nav:
+  - Latest Posts: index.md
+  - About: about.md
+  - '2023':
+    - 'Apple Self-hosted GitHub Runner': blog/2023/github-runner.md

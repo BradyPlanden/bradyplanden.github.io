@@ -1,0 +1,8 @@
+setup.py
+custom/__init__.py
+mkdocs_custom.egg-info/PKG-INFO
+mkdocs_custom.egg-info/SOURCES.txt
+mkdocs_custom.egg-info/dependency_links.txt
+mkdocs_custom.egg-info/entry_points.txt
+mkdocs_custom.egg-info/requires.txt
+mkdocs_custom.egg-info/top_level.txt
