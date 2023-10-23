@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs mkdocs-material pymdown-extensions
+      - run: pip install mkdocs mkdocs-material pymdown-extensions 
+      - run: mkdocs-macros-plugin mkdocs-timetoread-plugin mkdocs-material-extensions
       - run: pip install -e .
       - run: mkdocs gh-deploy --force --clean --verbose
