@@ -93,4 +93,5 @@ nav:
   - Latest Posts: index.md
   - About: about.md
   - '2023':
+    - 'Selectively merging files across branches': blog/2023/git-selective-merge.md
     - 'Apple Self-hosted GitHub Runner': blog/2023/github-runner.md

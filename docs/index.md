@@ -4,12 +4,12 @@ timetoread: False
 ---
 <style>
 .grid-item {
-    border: 1px solid #eee;
+    border: 2px solid #eee;
     padding: 2em;
     display: inline-block;
-    width: 19em;
-    height: 19em;
-    vertical-align: top;
+    width: 18em;
+    height: 20em;
+    vertical-align: middle;
 }
 </style>
 
