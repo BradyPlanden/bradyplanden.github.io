@@ -13,9 +13,9 @@ Recently, I've had the need to merge selective files from one branch into anothe
 ### The process:
 Let's say you have a branch named `feature-1` and want the file `example.py` from the `feature-2` branch:
 
-1. First, from the `feature-1` merge the `feature-2` branch with squash option (`git merge --squash feature-2`)
-2. Reset the files (or entire folders) that you don't want in `feature-1` (`git reset origin/feature-1 tests/` or `git reset origin/feature-1 tests/test.py`) or remove them completely (`git rm tests/test.py`)
-3. Add and commit the file(s) you want in your branch with a new commit message (`git add example.py && git commit -m "merge example.py from feature-2"`)
+1. First, from the `feature-1` branch, merge the `feature-2` branch with squash option (`git merge --squash feature-2`) to avoid creating a merge commit.
+2. Reset the files (or entire folders) that you don't want in `feature-1` (`git reset origin/feature-1 tests/` or `git reset origin/feature-1 tests/test.py`) or remove them completely (`git rm tests/test.py`).
+3. Add and commit the file(s) you want in your branch with a new commit message (`git add example.py && git commit -m "merge example.py from feature-2"`).
 4. Clean the branch to remove untracked changes (`git clean -xfd`), -f for force, -d to remove the untracked directories, and -x to remove the ignored files. 
 5. Restore the tracked changes (`git restore .`)
-6. Push the changes to the remote branch (`git push`)
+6. Push the changes to the remote branch (`git push`).
