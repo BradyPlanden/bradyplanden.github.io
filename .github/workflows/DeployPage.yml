@@ -14,5 +14,6 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs mkdocs-material pymdown-extensions 
       - run: pip install mkdocs-macros-plugin mkdocs-timetoread-plugin mkdocs-material-extensions
+      - run: pip install mkdocs-plotly-plugin 
       - run: pip install -e .
       - run: mkdocs gh-deploy --force --clean --verbose
