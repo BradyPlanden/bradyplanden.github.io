@@ -83,7 +83,7 @@ $c_1 \approx 2/n^2$, <br>
 $c_\mu \approx \text{min}(\mu_{\text{eff}}/n^2, 1-c_1)$ <br>
 $y_{i:\lambda}^{(g+1)} = \left(\mathbf{x}_{i:\lambda}^{(g+1)} - \mathbf{m}^{(g)}\right)/\sigma^{(g)}$ <br>
 
-This algorithm is repeated until the termination criteria is met with the best candidate stored on each iteration. The full algorithm is given in [1].
+This algorithm is repeated until the termination criteria is met with the best candidate stored on each iteration. The full algorithm is given in [[1,2]](#references).
 
 
 ## Example
@@ -143,5 +143,6 @@ The results of each of the optimisation algorithms constructed above are shown o
 As expected, the gradient descent method struggles with the large number of local optima created by the Gaussian noise, but the CMA-ES method is able to find the global minimum repeatedly. The code to repeat this example can be found in the [here](https://github.com/BradyPlanden/bradyplanden.github.io/tree/main/docs/blog/2023/CMAES) repository. That's it for this post, I hope you found it useful! Overall, CMA-ES provides a robust method for minimising a difficult cost function, but this robustness is traded off against performance.  If you have any questions or comments, please feel free to contact me.
 
 ## References
-[1] N. Hansen, ‘The CMA Evolution Strategy: A Tutorial’. arXiv, Mar. 10, 2023. Available: http://arxiv.org/abs/1604.00772
+[1] N. Hansen, ‘The CMA Evolution Strategy: A Tutorial’. arXiv, Mar. 10, 2023. Available: http://arxiv.org/abs/1604.00772 <br>
+[2] M. Nomura, Y. Akimoto, and I. Ono, ‘CMA-ES with Learning Rate Adaptation: Can CMA-ES with Default Population Size Solve Multimodal and Noisy Problems?’, in Proceedings of the Genetic and Evolutionary Computation Conference, Jul. 2023, pp. 839–847. doi: [10.1145/3583131.3590358](https://arxiv.org/abs/2304.03473).
 
