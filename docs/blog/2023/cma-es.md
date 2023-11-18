@@ -101,9 +101,11 @@ z = [f(x, y) for x in xy, y in xy]
 
 This gives us the following surface,
 
+<div align="center">
 ```plotly
 {"file_path": "./blog/2023/CMAES/surface-truth.json"}
 ```
+</div>
 
 A nice parabolic function with a global minimum at $(0,0)$. Now let's add some noise to the function, we do this with the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package in Julia. Let's sample from a normal distribution with a mean of zero and a standard deviation of 5. The updated function is given by $f(\mathbf{x}) = \mathbf{x}^2 + \varepsilon$, where $\varepsilon \sim \mathcal{N}(0, 5)$. The updated Julia form is then
 

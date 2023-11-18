@@ -11,7 +11,10 @@ description: "Configure a self-hosted Apple M2 GitHub runner to validate the dep
 
 In this post, I take a look at the process of creating a self-hosted ARM-based GitHub runner for CI/CD. This runner is currently being used for the development of PyBaMM and PyBOP.
 
-<img class="featured" src="/images/2023/apple-runner.png" alt="Featured Banner" />
+<!-- <img class="featured" src="/images/2023/apple-runner.png" alt="Featured Banner" /> -->
+<div style="text-align:center;">
+<img class="featured" src="/images/2023/apple-runner.png" alt="Featured Banner" style="width: 60%;" />
+</div>
 
 **TL;DR**: Configure a self-hosted Apple M2 GitHub runner to validate the deployment of your repositories on Apple-based ARM hardware. An [example](#example-workflow) workflow is presented from PyBaMM's daily testing workflow. This example is over 2X faster than the GitHub-hosted hardware.
 
