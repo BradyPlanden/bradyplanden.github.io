@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A today I learned (TIL) site" name="description"/>
+<meta content="Brady Planden" name="author"/>
+<link href="https://bradyplanden.github.io/blog/2023/cma-es/" rel="canonical"/>
+<link href="../beamer/" rel="prev"/>
+<link href="../git-selective-merge/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.4.6" name="generator"/>
+<title>The Covariance Matrix Adaptation Evolution Strategy (CMA-ES) - Today I Learned</title>
+<link href="../../../assets/stylesheets/main.35e1ed30.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.356b1318.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script></head>
+<body data-md-color-accent="teal" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#the-covariance-matrix-adaptation-evolution-strategy-cma-es">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Today I Learned" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Today I Learned">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Today I Learned
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              The Covariance Matrix Adaptation Evolution Strategy (CMA-ES)
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Dark" class="md-option" data-md-color-accent="teal" data-md-color-media="" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Dark">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+<input aria-label="Light" class="md-option" data-md-color-accent="slate" data-md-color-media="" data-md-color-primary="slate" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Light">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Today I Learned" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Today I Learned">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Today I Learned
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Latest Posts
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../about/">
+<span class="md-ellipsis">
+    About
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../publications/">
+<span class="md-ellipsis">
+    Publications
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Posts
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Posts
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../beamer/">
+<span class="md-ellipsis">
+    A beamer template for academic presentations
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    The Covariance Matrix Adaptation Evolution Strategy
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    The Covariance Matrix Adaptation Evolution Strategy
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-cma-es">
+    What is CMA-ES?
+  </a>
+<nav aria-label="What is CMA-ES?" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-sampling-evaluation">
+    Step 1 - Sampling &amp; Evaluation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-construct-the-evolution-paths">
+    Step 2 - Construct the Evolution Paths
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-3-update-the-search-distribution">
+    Step 3 - Update the Search Distribution
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example">
+    Example
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#references">
+    References
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../git-selective-merge/">
+<span class="md-ellipsis">
+    Selectively merging files across branches
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../github-runner/">
+<span class="md-ellipsis">
+    Apple Self-hosted GitHub Runner
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="the-covariance-matrix-adaptation-evolution-strategy-cma-es">The Covariance Matrix Adaptation Evolution Strategy (CMA-ES)<a class="headerlink" href="#the-covariance-matrix-adaptation-evolution-strategy-cma-es" title="Permanent link">¶</a></h1><p style="color:#bdbdbd"><i>Estimated time to read: 6 minutes</i></p>
+<p>Recently I've been working on improved parameterisation and optimisation methods for continuum scale battery models. One of the challenges in predictive modelling is parameter identification from measured data. In the electrochemical field, this data is often time-series in nature, collected from potentiostatic and/or galvanostatic experiments on different time scales.</p>
+<p>This challenge becomes even more difficult when the model structure is overly constrained (e.g. multi-particle based continuum models) and there is a lack of information for unique identification. To overcome this, I have been looking for improved optimisation methods to identify the model parameters, and one such method has caught my interest and I thought I would discuss it here.</p>
+<h2 id="what-is-cma-es">What is CMA-ES?<a class="headerlink" href="#what-is-cma-es" title="Permanent link">¶</a></h2>
+<p>CMA-ES is a stochastic optimisation algorithm that provides a global search for the functional critical point. It is a derivative-free algorithm that uses a population of candidate solutions to iteratively update the search distribution. This method is particularly useful for non-linear, non-convex and multimodal optimisation problems. </p>
+<h3 id="step-1-sampling-evaluation">Step 1 - Sampling &amp; Evaluation<a class="headerlink" href="#step-1-sampling-evaluation" title="Permanent link">¶</a></h3>
+<p>The algorithm starts by sampling candidate solutions from a multivariate normal distribution at step <span class="arithmatex">\((g+1)\)</span>. The candidates are then evaluated and stored in ascending order of performance, i.e. element zero stores the current best candidate from the optimiser.</p>
+<div class="arithmatex">\[
+    \mathbf{x}_{k}^{(g+1)} \sim \mathbf{m}^{(g)} + \sigma^{(g)} \mathcal{N}\left(0, \mathbf{C}^{(g)}\right), \ \ \ \ \ \ \text{for} \ g = 1,...,\lambda
+\]</div>
+<p>where, <br/>
+<span class="arithmatex">\(\mathbf{x}_{k}^{(g+1)}\)</span> is the <span class="arithmatex">\(k^\text{th}\)</span> candidate at the <span class="arithmatex">\((g+1)\)</span> iteration <br/>
+<span class="arithmatex">\(\mathbf{m}^{(g)}\)</span> is the mean vector of the search distribution at <span class="arithmatex">\(g\)</span><br/>
+<span class="arithmatex">\(\sigma^{(g)}\)</span> is the step size at <span class="arithmatex">\(g\)</span> <br/>
+<span class="arithmatex">\(\mathbf{C}^{(g)}\)</span> is the covariance matrix. <br/>
+<span class="arithmatex">\(\mathcal{N}\left(0, \mathbf{C}^{(g)}\right)\)</span> is a multivariate normal distribution with corresponding zero mean and covariance matrix <span class="arithmatex">\(\mathbf{C}^{(g)}\)</span> <br/>
+<span class="arithmatex">\(\lambda \geq 2\)</span>, is the population size <br/></p>
+<h3 id="step-2-construct-the-evolution-paths">Step 2 - Construct the Evolution Paths<a class="headerlink" href="#step-2-construct-the-evolution-paths" title="Permanent link">¶</a></h3>
+<p>Using a weight function <span class="arithmatex">\(w_i\)</span> and a subset of the population, known as the parent value, the weighted averages as <span class="arithmatex">\(dy = \sum_{i=1}^{\mu} w_i y_{1:\lambda}\)</span> and <span class="arithmatex">\(dz = \sum_{i=1}^{\mu} w_i z_{1:\lambda}\)</span> are computed. The evolution path at generation <span class="arithmatex">\(g\)</span> is then constructed as,</p>
+<div class="arithmatex">\[
+    \mathbf{p}_{\text{c}}^{(g+1)} = (1 - c_{\text{c}}) \mathbf{p}_{\text{c}}^{(g)} + h_{\sigma}^{(g+1)} \sqrt{c_{\text{c}}(2 - c_{\text{c}})\mu_w dy}
+\]</div>
+<p>where the conjugate evolution path is then constructed as,</p>
+<div class="arithmatex">\[
+    \mathbf{p}_{\sigma}^{(g+1)} = (1 - c_\sigma) \mathbf{p}_{\sigma}^{(g)} + \sqrt{c_\sigma(2 - c_\sigma)\mu_w dz}
+\]</div>
+<p>where, <span class="arithmatex">\(\mu_w = 1/\sum_{i=1}^\mu w_i^2\)</span>, and <span class="arithmatex">\(c_{\text{c}}\)</span>, <span class="arithmatex">\(c_{\sigma}\)</span> are the cumulation factors, with <span class="arithmatex">\(h_{\sigma}^{(g+1)}\)</span> is the Heaviside function, defined as,</p>
+<div class="arithmatex">\[
+h_{\sigma}^{(g+1)} = \begin{cases}
+    1, &amp; \text{if } \frac{\left\lVert \mathbf{p}_{\sigma}^{(g+1)} \right\rVert^2}{1-(1-c_\sigma)^{2\cdot(g+1)}} &lt; \left(2+4/(d+1)\right)d, \\
+    0, &amp; \text{otherwise}
+\end{cases}
+\]</div>
+<h3 id="step-3-update-the-search-distribution">Step 3 - Update the Search Distribution<a class="headerlink" href="#step-3-update-the-search-distribution" title="Permanent link">¶</a></h3>
+<p>The algorithm updates the mean search distribution via</p>
+<div class="arithmatex">\[
+    \mathbf{m}^{(g+1)} = \mathbf{m}^{(g)} + c_\text{m}\sum_{i=1}^{\mu} w_{i} \left(\mathbf{x}_{i:\lambda}^{(g+1)} - \mathbf{m}^{(g)}\right)
+\]</div>
+<p>where, <br/>
+<span class="arithmatex">\(w_i\)</span> is a positive weighting vector <br/>
+<span class="arithmatex">\(\mu \leq \lambda\)</span> is the number of solutions used to update the mean vector <br/>
+<span class="arithmatex">\(c_\text{m}\)</span> is the learning rate <br/></p>
+<p>Essentially, the mean from generation <span class="arithmatex">\((g)\)</span> is summed with a weighted sum of the geometric difference between the <span class="arithmatex">\((g+1)\)</span> samples multiplied by the learning rate. To update the step size, the algorithm uses the following update rule,</p>
+<div class="arithmatex">\[
+    \sigma^{(g+1)} = \sigma^{(g)} \exp\left(\frac{c_\sigma}{d_\sigma}\left(\frac{\left\lVert \mathbf{p}_{\sigma}^{(g+1)} \right\rVert}{\mathbb{E}\left\lVert \mathcal{N}\left(0, \mathbf{I}\right) \right\rVert} - 1\right)\right)
+\]</div>
+<p>where <span class="arithmatex">\(d_\sigma\)</span> is a damping parameter on <span class="arithmatex">\(\sigma^g\)</span>. Next, to estimate the covariance matrix,</p>
+<div class="arithmatex">\[
+    \mathbf{C}^{(g+1)} =  \left(1-c_1-c_\mu \sum w_j\right) \mathbf{C}^{(g)} + c_1 \underbrace{\mathbf{p}_{\text{c}}^{(g+1)} \mathbf{p}_{\text{c}}^{(g+1)^T}}_{\text{rank-one update}} + c_\mu \underbrace{\sum_{i=1}^{\lambda} w_{i} \mathbf{y}_{i:\lambda}^{(g+1)} \left(\mathbf{y}_{i:\lambda}^{(g+1)}\right)^T}_{\text{rank-}\mu \ \text{update}}
+\]</div>
+<p>where, <br/>
+<span class="arithmatex">\(c_1 \approx 2/n^2\)</span>, <br/>
+<span class="arithmatex">\(c_\mu \approx \text{min}(\mu_{\text{eff}}/n^2, 1-c_1)\)</span> <br/>
+<span class="arithmatex">\(y_{i:\lambda}^{(g+1)} = \left(\mathbf{x}_{i:\lambda}^{(g+1)} - \mathbf{m}^{(g)}\right)/\sigma^{(g)}\)</span> <br/></p>
+<p>This algorithm is repeated until the termination criteria is met with the best candidate stored on each iteration. The full algorithm is given in <a href="#references">[1,2]</a>.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">¶</a></h2>
+<p>Let's look at how CMA-ES deals with the minimisation of a simple two-dimensional parabola function distorted by Gaussian noise. First, the underlying function is given as <span class="arithmatex">\(f(\mathbf{x}) = \mathbf{x}^2\)</span>, where <span class="arithmatex">\(\mathbf{x} \in \mathbb{R}^2\)</span>. A Julia script to construct this function is given below,</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">GLMakie</span><span class="p">,</span><span class="w"> </span><span class="n">Distributions</span><span class="p">,</span><span class="w"> </span><span class="n">Dierckx</span>
+
+<span class="n">xy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">xy</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">xy</span><span class="p">]</span>
+</code></pre></div>
+<p>This gives us the following surface,</p>
+<div align="center">
+<div class="mkdocs-plotly" data-jsonpath="../CMAES/surface-truth.json"></div>
+</div>
+<p>A nice parabolic function with a global minimum at <span class="arithmatex">\((0,0)\)</span>. Now let's add some noise to the function, we do this with the <a href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package in Julia. Let's sample from a normal distribution with a mean of zero and a standard deviation of 5. The updated function is given by <span class="arithmatex">\(f(\mathbf{x}) = \mathbf{x}^2 + \varepsilon\)</span>, where <span class="arithmatex">\(\varepsilon \sim \mathcal{N}(0, 5)\)</span>. The updated Julia form is then</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">GLMakie</span><span class="p">,</span><span class="w"> </span><span class="n">Distributions</span><span class="p">,</span><span class="w"> </span><span class="n">Dierckx</span>
+
+<span class="n">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">xy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">noise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="n">Normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">),</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">xy</span><span class="p">))</span>
+<span class="n">μ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Spline2D</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span><span class="n">xy</span><span class="p">,</span><span class="n">reshape</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">μ</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">xy</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">xy</span><span class="p">]</span>
+</code></pre></div>
+<p>Due to the high noise covariance, exploring the functional surface is quite challenging as the gradient information is heavily corrupted by the Gaussian noise. Since the CMA-ES algorithm doesn't need the gradient information, it is a good candidate for this problem. To implement the CMA-ES algorithm, we will use the <a href="https://github.com/wildart/Evolutionary.jl/tree/master">Evolutionary.jl</a> package. To provide a reference for the performance of CMA-ES on this problem, I've added a gradient descent method using <a href="https://github.com/JuliaNLSolvers/Optim.jl/">Optim.jl</a>. This is implemented with the CMA-ES below.</p>
+<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">Evolutionary</span><span class="p">,</span><span class="w"> </span><span class="n">Distributions</span><span class="p">,</span><span class="w"> </span><span class="n">Optim</span>
+
+<span class="c"># Update functional form and optimize</span>
+<span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">12.4</span><span class="p">,</span><span class="mf">9.53</span><span class="p">]</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">μ</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">res_cmaes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Evolutionary</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">CMAES</span><span class="p">(</span><span class="n">sigma0</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Evolutionary</span><span class="o">.</span><span class="n">Options</span><span class="p">(</span><span class="n">store_trace</span><span class="o">=</span><span class="nb">true</span><span class="p">))</span>
+<span class="n">res_grad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Optim</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">GradientDescent</span><span class="p">(),</span><span class="w"> </span><span class="n">Optim</span><span class="o">.</span><span class="n">Options</span><span class="p">(</span><span class="n">store_trace</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">extended_trace</span><span class="o">=</span><span class="nb">true</span><span class="p">))</span>
+</code></pre></div>
+<p>The results of each of the optimisation algorithms constructed above are shown on the noisy functional surface given below,</p>
+<div align="center">
+<div class="mkdocs-plotly" data-jsonpath="../CMAES/surface-corrupt.json"></div>
+</div>
+<p>As expected, the gradient descent method struggles with the large number of local optima created by the Gaussian noise, but the CMA-ES method is able to find the global minimum repeatedly. The code to repeat this example can be found in the <a href="https://github.com/BradyPlanden/bradyplanden.github.io/tree/main/docs/blog/2023/CMAES">here</a> repository. That's it for this post, I hope you found it useful! Overall, CMA-ES provides a robust method for minimising a difficult cost function, but this robustness is traded off against performance.  If you have any questions or comments, please feel free to contact me.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<p>[1] N. Hansen, ‘The CMA Evolution Strategy: A Tutorial’. arXiv, Mar. 10, 2023. Available: <a href="http://arxiv.org/abs/1604.00772">http://arxiv.org/abs/1604.00772</a> <br/>
+[2] M. Nomura, Y. Akimoto, and I. Ono, ‘CMA-ES with Learning Rate Adaptation: Can CMA-ES with Default Population Size Solve Multimodal and Noisy Problems?’, in Proceedings of the Genetic and Evolutionary Computation Conference, Jul. 2023, pp. 839–847. doi: <a href="https://arxiv.org/abs/2304.03473">10.1145/3583131.3590358</a>.</p>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/BradyPlanden/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/in/bradyplanden/" rel="noopener" target="_blank" title="www.linkedin.com">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/BradyPlanden" rel="noopener" target="_blank" title="twitter.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+<a class="md-social__link" href="https://scholar.google.com/citations?user=riURnXwAAAAJ&amp;hl=en" rel="noopener" target="_blank" title="scholar.google.com">
+<svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9V320c0 28.4-10.8 57.7-22.3 80.8-6.5 13-13.9 25.8-22.5 37.6-3.2 4.3-4.1 9.9-2.3 15s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7.3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7-3.2-14.2-7.5-28.7-13.5-42v-24.6c0-30.2 10.2-58.7 27.9-81.5 12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5.8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1l280.6-101c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1c-7.6-2.7-15.6-4.1-23.7-4.1zM128 408c0 35.3 86 72 192 72s192-36.7 192-72l-15.3-145.4L354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6l-142.2-51.4L128 408z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "search.suggest", "navigation.expand", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<span hidden="True" id="default-template-settings">{"font.color": "#2a3f5f", "paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "#E5ECF6", "polar.bgcolor": "#E5ECF6", "polar.angularaxis.gridcolor": "white", "polar.angularaxis.linecolor": "white", "polar.radialaxis.gridcolor": "white", "polar.radialaxis.linecolor": "white", "ternary.bgcolor": "#E5ECF6", "ternary.aaxis.gridcolor": "white", "ternary.aaxis.linecolor": "white", "ternary.baxis.gridcolor": "white", "ternary.baxis.linecolor": "white", "ternary.caxis.gridcolor": "white", "ternary.caxis.linecolor": "white", "xaxis.gridcolor": "white", "xaxis.linecolor": "white", "xaxis.zerolinecolor": "white", "yaxis.gridcolor": "white", "yaxis.linecolor": "white", "yaxis.zerolinecolor": "white", "scene.xaxis.backgroundcolor": "#E5ECF6", "scene.xaxis.gridcolor": "white", "scene.xaxis.linecolor": "white", "scene.xaxis.zerolinecolor": "white", "scene.yaxis.backgroundcolor": "#E5ECF6", "scene.yaxis.gridcolor": "white", "scene.yaxis.linecolor": "white", "scene.yaxis.zerolinecolor": "white", "scene.zaxis.backgroundcolor": "#E5ECF6", "scene.zaxis.gridcolor": "white", "scene.zaxis.linecolor": "white", "scene.zaxis.zerolinecolor": "white", "shapedefaults.line.color": "#2a3f5f", "annotationdefaults.arrowcolor": "#2a3f5f", "geo.bgcolor": "white", "geo.landcolor": "#E5ECF6", "geo.subunitcolor": "white", "geo.lakecolor": "white", "mapbox.style": "light"}</span><span hidden="True" id="slate-template-settings">{"font.color": "#f2f5fa", "paper_bgcolor": "rgba(0,0,0,0)", "plot_bgcolor": "rgb(17,17,17)", "polar.bgcolor": "rgb(17,17,17)", "polar.angularaxis.gridcolor": "#506784", "polar.angularaxis.linecolor": "#506784", "polar.radialaxis.gridcolor": "#506784", "polar.radialaxis.linecolor": "#506784", "ternary.bgcolor": "rgb(17,17,17)", "ternary.aaxis.gridcolor": "#506784", "ternary.aaxis.linecolor": "#506784", "ternary.baxis.gridcolor": "#506784", "ternary.baxis.linecolor": "#506784", "ternary.caxis.gridcolor": "#506784", "ternary.caxis.linecolor": "#506784", "xaxis.gridcolor": "#283442", "xaxis.linecolor": "#506784", "xaxis.zerolinecolor": "#283442", "yaxis.gridcolor": "#283442", "yaxis.linecolor": "#506784", "yaxis.zerolinecolor": "#283442", "scene.xaxis.backgroundcolor": "rgb(17,17,17)", "scene.xaxis.gridcolor": "#506784", "scene.xaxis.linecolor": "#506784", "scene.xaxis.zerolinecolor": "#C8D4E3", "scene.yaxis.backgroundcolor": "rgb(17,17,17)", "scene.yaxis.gridcolor": "#506784", "scene.yaxis.linecolor": "#506784", "scene.yaxis.zerolinecolor": "#C8D4E3", "scene.zaxis.backgroundcolor": "rgb(17,17,17)", "scene.zaxis.gridcolor": "#506784", "scene.zaxis.linecolor": "#506784", "scene.zaxis.zerolinecolor": "#C8D4E3", "shapedefaults.line.color": "#f2f5fa", "annotationdefaults.arrowcolor": "#f2f5fa", "geo.bgcolor": "rgb(17,17,17)", "geo.landcolor": "rgb(17,17,17)", "geo.subunitcolor": "#506784", "geo.lakecolor": "rgb(17,17,17)", "mapbox.style": "dark"}</span><script src="../../../assets/javascripts/mkdocs-plotly-plugin.js"></script></body>
+</html>

@@ -85,6 +85,12 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - pymdownx.pathconverter: # From https://stackoverflow.com/a/69276900
+      base_path: 'bradyplanden.github.io'
+      relative_path: ''
+      absolute: false
+      tags: a script img link object embed
+
   
 extra_css:
   - stylesheets/extra.css
@@ -104,7 +110,9 @@ plugins:
 nav:
   - Latest Posts: index.md
   - About: about.md
-  - '2023':
+  - Publications: publications.md
+  - Posts:
+    - 'A beamer template for academic presentations': blog/2023/beamer.md
     - 'The Covariance Matrix Adaptation Evolution Strategy': blog/2023/cma-es.md
     - 'Selectively merging files across branches': blog/2023/git-selective-merge.md
     - 'Apple Self-hosted GitHub Runner': blog/2023/github-runner.md

@@ -16,7 +16,7 @@ class MyCustom(BasePlugin):
                 page
                 for page in self.nav.pages
                 if page.parent
-                and re.match(r"\d{4}", page.parent.title)
+                and page.parent.title == 'Posts'
                 and "image" in page.meta
             ]
 
