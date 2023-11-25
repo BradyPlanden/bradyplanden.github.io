@@ -6,7 +6,7 @@ timetoread: False
 <style>
 .grid-item {
   border: 2px solid #eee;
-  padding: 1em;
+  padding: 2em;
   display: inline-block;  
   width: 18em;
   height: 20em;
