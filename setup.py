@@ -4,7 +4,7 @@ setup(
     name="mkdocs-custom",
     version="0.0.1",
     author="Brady Planden",
-    packages=["tkdr-site-custom"],
+    packages=["custom"],
     description="Local custom plugin, and mkdocs dependencies",
     install_requires=[
         "mkdocs",
