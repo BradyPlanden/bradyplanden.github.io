@@ -112,6 +112,7 @@ nav:
   - About: about.md
   - Publications: publications.md
   - Posts:
+    - 'Group presentation on PyBOP': blog/2024/pybop-group-presentation.md
     - 'A beamer template for academic presentations': blog/2023/beamer.md
     - 'The Covariance Matrix Adaptation Evolution Strategy': blog/2023/cma-es.md
     - 'Selectively merging files across branches': blog/2023/git-selective-merge.md
