@@ -7,9 +7,9 @@ image: /images/2024/pybop-background.png
 description: 
 ---
 
-Once a term, each member of our lab group gives a 30 minute presentation on their research progress. These presentations provide a great opportunity to cross pollinate ideas and methods within the group, as well as a great opportunity for each person to improve their presentation skills and ability to defend research decisions.
+Once a term, each member of our lab group gives a 30 minute presentation on their research progress. These presentations are a great opportunity to cross-pollinate ideas and methods within the group, as well as a chance for each person to improve their presentation skills and ability to defend research decisions.
 
-In an effort to disseminate these presentations beyond our group (more than just the obligatory preprint/article), I'm going to share them here. To start with, here is my presentation from last semester. This presentation is the first of a series of presentations on the development of PyBOP and it's applications.
+In an effort to disseminate these presentations beyond our group (more than just the obligatory preprint/article), I'm going to share them here. To start with, here is my presentation from last term. This presentation is the first of a series of presentations about the development of PyBOP and it's applications.
 
 These presentations will use the beamer template I've previously discussed [before](../2023/beamer.md).
 
