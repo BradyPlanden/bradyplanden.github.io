@@ -112,6 +112,8 @@ nav:
   - About: about.md
   - Publications: publications.md
   - Posts:
+  
+    - 'MRS 2024 Invited Talk': blog/2024/mrs-2024.md
     - 'Group presentation on PyBOP': blog/2024/pybop-group-presentation.md
     - 'A beamer template for academic presentations': blog/2023/beamer.md
     - 'The Covariance Matrix Adaptation Evolution Strategy': blog/2023/cma-es.md

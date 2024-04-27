@@ -5,7 +5,7 @@ timetoread: False
 
 <style>
 .grid-item {
-  border: 2px solid #eee;
+  border: 1px solid #eee;
   padding: 2em;
   display: inline-block;  
   width: 18em;
@@ -22,8 +22,6 @@ timetoread: False
 }
 </style>
 
-<div class="grid">
-
 {% for page in navigation.recent_pages() %}
 <div class="grid-item">
   <div class="content">
@@ -36,4 +34,3 @@ timetoread: False
   </div>
 </div>
 {% endfor %}
-</div>

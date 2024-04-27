@@ -1,6 +1,6 @@
 ---
-date: 2023-02-13 00:00 UK/London
-categories: academic group presentation
+date: 2024-02-13 00:00 UK/London
+categories: academic group presentation pybop
 published: true
 title: PyBOP Battery Intelligence Group Presentation
 image: /images/2024/pybop-background.png
