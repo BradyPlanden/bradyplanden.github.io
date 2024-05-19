@@ -6,11 +6,11 @@ hide:
 This is a site to store the ongoing processes and workflows that I learn throughout the day. This may be useful for others working in a similar field, or at least entertaining with a twist of usefulness for everyone else.
 
 ## `>> whoami`
-Dr Brady Planden is a Postdoctoral Research Associate at the University of Oxford. He received his Ph.D. from Oxford Brookes University with a thesis entitled ["Improvements on physics-informed models for lithium batteries"](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=riURnXwAAAAJ&citation_for_view=riURnXwAAAAJ:9yKSN-GCB0IC){:target="_blank"}, which focused on reduced order electrochemical modelling techniques. Brady completed his Bachelor of Engineering at the University of Victoria. Brady is currently doing the following,
+Dr Brady Planden is a Postdoctoral Research Associate at the University of Oxford. He received his Ph.D. from Oxford Brookes University with a thesis entitled ["Improvements on physics-informed models for lithium batteries"](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=riURnXwAAAAJ&citation_for_view=riURnXwAAAAJ:9yKSN-GCB0IC){:target="_blank"}, which focused on reduced order electrochemical modelling techniques. Brady completed his Bachelor of Engineering at the University of Victoria. Brady currently does the following,
 
-- Developing software for electrochemical modelling ([PyBOP](https://github.com/pybop-team/PyBOP){:target="_blank"}, [LiiBRA](https://github.com/BradyPlanden/LiiBRA.jl){:target="_blank"}, [Galv](https://github.com/Battery-Intelligence-Lab/galv))
-- Conducting research on new lithium-ion battery chemistries with the EU's [IntelLiGent Consortium](https://heuintelligent.eu/){:target="_blank"}
-- Works as a post-doc in the [Battery Intelligence Lab](https://howey.eng.ox.ac.uk/){:target="_blank"}. This includes mentoring, random research IT, and a small amount of lecturing, etc.
+- Develops software for electrochemical modelling ([PyBOP](https://github.com/pybop-team/PyBOP){:target="_blank"}, [LiiBRA](https://github.com/BradyPlanden/LiiBRA.jl){:target="_blank"}, and [Galv](https://github.com/Battery-Intelligence-Lab/galv))
+- Conducting research on new lithium-ion battery chemistries witin the EU's [IntelLiGent Consortium](https://heuintelligent.eu/){:target="_blank"}
+- Works as a post-doc in the [Battery Intelligence Lab](https://howey.eng.ox.ac.uk/){:target="_blank"}. This includes mentoring, research IT, and teaching.
 
 ## `>> ls`
 
@@ -34,6 +34,7 @@ Here's a few resources that I have found useful (*in no particular order*):
 </td>
 <td>
 <li> <a href="https://about.codecov.io/" target="_blank" >Codecov </a> </li>
+<li> <a href="https://chat.lmsys.org/" target="_blank" >LMSYS Chatbot Arena </a> </li>
 <li> <a href="https://github.com/scastiel/book-pr/blob/main/manuscript.md" target="_blank" >Pull Requests </a> </li>
 <li> <a href="https://train.oxrse.uk/" target="_blank" >Oxford RSE </a> </li>
 <li> <a href="https://github.com/tailscale" target="_blank" >tailscale </a> </li>
@@ -48,6 +49,7 @@ Here's a few resources that I have found useful (*in no particular order*):
 </td>
 <td>
 <li> <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" >Academic template </a> </li>
+<li> <a href="https://www.zotero.org/" target="_blank" >Zotero </a> </li>
 <li> <a href="https://users.aalto.fi/~ssarkka/#books" target="_blank" >Simo Särkkä </a> </li>
 </td>
 <td>

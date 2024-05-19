@@ -6,6 +6,10 @@ hide:
 
 ## [Google Scholar Profile](https://scholar.google.com/citations?user=riURnXwAAAAJ&hl=en)
 
+**Quantitative Ultrasound Spectroscopy for Screening Cylindrical Lithium‐Ion Batteries for Second‐Life Applications** <br>
+S Montoya‐Bedoya, E Garcia‐Tamayo, D Rohrbach, J Gaviria‐Cardona, <br>H Martinez‐Tejada, B Planden, D A Howey, W Florez, R Valencia, M Bernal 2024. <br>
+[[Open-Access]](https://doi.org/10.1002/batt.202400002){:target="_blank"}
+
 **Looping in the Human: Collaborative and Explainable Bayesian Optimization** <br>
 M Adachi, B Planden, DA Howey, K Maundet, MA Osborne, SL Chau. 2023. <br>
 [[Arxiv]](https://arxiv.org/abs/2310.17273){:target="_blank"}
@@ -19,7 +23,7 @@ B Planden, K Lukow, P Henshall, G Collier, D Morrey. 2022. <br>
 [[Arxiv]](https://arxiv.org/abs/2203.17105v1){:target="_blank"} [[DOI]](https://doi.org/10.1016/j.est.2022.105637){:target="_blank"}
 
 **BattPhase—A Convergent, Non-Oscillatory, Efficient Algorithm and Code for Predicting Shape Changes in Lithium Metal Batteries Using Phase-Field Models: Part I. Secondary Current Distribution** <br>
-T Jang, L Mishra, S A Roberts, B Planden, A Subramaniam, M Uppaluri, D Linder, M P Gururajan, J Zhang, V R Subramanian. 2022. <br>
+T Jang, L Mishra, S A Roberts, B Planden, A Subramaniam, M Uppaluri, D Linder,<br> M P Gururajan, J Zhang, V R Subramanian. 2022. <br>
 [[Pre-Print]](https://osf.io/preprints/ecsarxiv/k2vu6/){:target="_blank"} [[DOI]](https://doi.org/10.1149/1945-7111/ac86a7){:target="_blank"}
 
 **Improvements on physics-informed models for lithium batteries** <br>
