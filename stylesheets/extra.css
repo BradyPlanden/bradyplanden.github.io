@@ -1,0 +1,7 @@
+.md-typeset p > code {
+    color: red;
+  }
+
+.md-typeset ol li > code {
+color: red;
+}
