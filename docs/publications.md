@@ -6,6 +6,14 @@ hide:
 
 ## [Google Scholar Profile](https://scholar.google.com/citations?user=riURnXwAAAAJ&hl=en)
 
+**PyBOP: A Python package for battery model optimisation and parameterisation** <br>
+B Planden, N E Courtier, M Robinson, A Khetarpal, F Brosa Planella, D A Howey, 2024. <br>
+[[Arxiv]](https://doi.org/10.48550/arXiv.2412.15859){:target="_blank"}
+
+**Physics-based battery model parametrisation from impedance data** <br>
+N Hallemans, N E Courtier, C P Please, B Planden, R Dhoot, R Timms, D Howey, S R Duncan, 2024. <br>
+[[Arxiv]](https://doi.org/10.48550/arXiv.2412.10896){:target="_blank"}
+
 **Quantitative Ultrasound Spectroscopy for Screening Cylindrical Lithium‐Ion Batteries for Second‐Life Applications** <br>
 S Montoya‐Bedoya, E Garcia‐Tamayo, D Rohrbach, J Gaviria‐Cardona, <br>H Martinez‐Tejada, B Planden, D A Howey, W Florez, R Valencia, M Bernal 2024. <br>
 [[Open-Access]](https://doi.org/10.1002/batt.202400002){:target="_blank"}
